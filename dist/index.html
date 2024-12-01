@@ -1,60 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gazette</title>
-    <link rel="stylesheet" href="stylesheet.css" />
-  </head>
-  <body class="ml-10 mr-10 font-serif">
-    <div class="flex flex-col p-4 ml-10 mr-10 ">
-      <header>
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-row space-x-2">
-            <form>
-              <input
-                type="text"
-                id="search"
-                aria-label="search"
-                placeholder="SEARCH"
-                class="placeholder-gray-600 border-gray-300 border-x-2 border-y-2 rounded-md px-2 focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800"
-              />
-            </form>
-            <button type="submit" class="bg-blue-500 text-white rounded-md text-xs px-2">GO</button>
-          </div>
-          <div class="flex flex-row justify-between space-x-6">
-            <p class="cursor-pointer"><a href="#">US</a></p>
-            <p class="cursor-pointer"><a href="#">NIG</a></p></p>
-            <p class="cursor-pointer"><a href="#">GB</a></p></p>
-          </div>
-          <p>ACCOUNT</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gazette</title>
+  <link rel="stylesheet" href="stylesheet.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="ml-10 mr-10 font-serif">
+  <div class="flex flex-col p-4 ml-10 mr-10">
+    <header>
+      <div class="flex flex-row justify-between">
+        <div class="flex flex-row space-x-2">
+          <form>
+            <input type="text" id="search" aria-label="search" placeholder="SEARCH"
+              class="placeholder-gray-600 border-gray-300 border-x-2 border-y-2 rounded-md px-2 focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800" />
+          </form>
+          <button type="submit" class="bg-blue-500 text-white rounded-md text-xs px-2">GO</button>
         </div>
+        <div class="flex flex-row justify-between space-x-6">
+          <p class="cursor-pointer"><a href="#">US</a></p>
+          <p id="trigger-ng" class="cursor-pointer"><a href="#">NIG</a></p>
+          <p class="cursor-pointer"><a href="#">GB</a></p>
+        </div>
+        <p>ACCOUNT</p>
+      </div>
 
-        <div class="flex flex-row justify-evenly mt-5">
-          <div class="text-sm">
-            <div>
-              <p>Sunday, December 1, 2024</p>
-            </div>
-          </div>
-
-          <div class="text-5xl">
-            <p>GAZETTE</p>
-          </div>
-
-          <div class="text-lg">
+      <div class="flex flex-row justify-evenly mt-5">
+        <div class="text-sm">
+          <div>
             <p>Sunday, December 1, 2024</p>
           </div>
+        </div>
+
+        <div class="text-5xl">
+          <p>GAZETTE</p>
+        </div>
+
+        <div class="text-lg space-x-1 flex flex-row">
+          <p>EN</p>
+          <i class="fa fa-chevron-down mt-1 cursor-pointer" aria-hidden="true"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="space-y-1 mt-4">
+      <hr class="border-1 border-black">
+      <hr class="border-1 border-black">
+    </div>
+
+    <div id="news-content" class="grid grid-cols-3 gap-6 mt-6">
+      <!-- First section (1-10) -->
+      <div class="col-span-1 space-y-3">
+        <div id="news1-10" class="space-y-1">
+          <div id="news-title1" class="text-sm font-semibold mt-4">NEWS TITLE</div>
+          <div id="news-desc1" class="mt-4">News Desc</div>
+        </div>
+      </div>
+
+      <!-- Second section (11-20) -->
+      <div id="news2-20" class="space-y-1">
+        <div id="news-title2" class="text-sm font-semibold mt-4">NEWS TITLE</div>
+        <div id="news-desc2" class="mt-4">News Desc</div>
+      </div>
+
+      <!-- Third section (21-25) -->
+      <div id="news21-25" class="bg-gray-100 p-4 rounded-lg">
+        <div class="space-y-1">
+          <div id="news-title3" class="text-sm font-semibold mt-4">NEWS TITLE</div>
+          <div id="news-desc3" class="mt-4">News Desc</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-1 mt-4">
+      <hr class="border-1 border-black">
+      <!-- <hr class="border-1 border-black"> -->
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 px-4 mt-20">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About Section -->
         <div>
-      </header>
-    </div>
+          <h3 class="text-lg font-semibold text-white mb-4">About Us</h3>
+          <p class="text-sm">
+            Stay updated with the latest news from around the world. Your trusted source for accurate and timely
+            information.
+          </p>
+        </div>
 
-    <!-- <div class="text-center mt-10">
-    <div id="trigger" class="text-2xl text-blue-500 cursor-pointer hover:underline">
-      Click to Fetch BBC news sources
-    </div>
-    <div id="result" class="mt-5 text-lg text-orange-600"></div>
-  </div> -->
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">Home</a></li>
+            <li><a href="#" class="hover:text-white">World</a></li>
+            <li><a href="#" class="hover:text-white">Politics</a></li>
+            <li><a href="#" class="hover:text-white">Technology</a></li>
+            <li><a href="#" class="hover:text-white">Sports</a></li>
+          </ul>
+        </div>
 
-    <script src="index.js"></script>
-  </body>
+        <!-- Contact Information -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+          <p class="text-sm">Email: <a href="mailto:info@gazette.com"
+              class="text-blue-400 hover:underline">info@gazette.com</a></p>
+          <p class="text-sm">Phone: <a href="tel:+1234567890" class="text-blue-400 hover:underline">+23480 594 72483</a>
+          </p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
+        © 2024 Gazette. All rights reserved.
+      </div>
+    </footer>
+
+
+  </div>
+
+
+  <script src="index.js"></script>
+</body>
+
 </html>
+
+
+<!-- <div class="text-center mt-10">
+  <div id="trigger" class="text-2xl text-blue-500 cursor-pointer hover:underline">
+    Click to Fetch BBC news sources
+  </div>
+  <div id="result" class="mt-5 text-lg text-orange-600"></div>
+</div> -->
