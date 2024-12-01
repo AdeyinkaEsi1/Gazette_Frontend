@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Triggered Header</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 80px;
+            /* Initial position */
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: top 0.5s ease-in-out, opacity 0.3s ease-in-out;
+            z-index: 1000;
+            opacity: 1;
+            /* Initially visible */
+        }
+
+        .header.hidden {
+            opacity: 0;
+            /* Completely invisible */
+            top: -60px;
+            /* Move out of view */
+        }
+
+        .header.visible {
+            top: 0;
+            /* Drop in from the top */
+            opacity: 1;
+            /* Make it visible */
+        }
+
+        .content {
+            padding: 100px 20px;
+            height: 2000px;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Sticky Header</div>
+    <div class="content">
+        Scroll down to see the header disappear and reappear!
+    </div>
+
+    <script>
+        const header = document.querySelector('.header');
+        const triggerHideHeight = 50;  // Height after which header becomes invisible
+        const triggerShowHeight = 200; // Height after which header slides back in
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > triggerShowHeight) {
+                header.classList.remove('hidden');
+                header.classList.add('visible'); // Show and drop down
+            } else if (window.scrollY > triggerHideHeight) {
+                header.classList.remove('visible');
+                header.classList.add('hidden'); // Hide out of view
+            } else {
+                header.classList.remove('hidden', 'visible'); // Reset to initial state
+            }
+        });
+    </script>
+</body>
+
+</html>
