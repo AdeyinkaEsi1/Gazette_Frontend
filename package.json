@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.4.15"
+  },
+  "name": "gazette_frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:css": "tailwindcss -i ./src/style.css -o ./dist/stylesheet.css --watch",
+    "build:css": "cross-env NODE_ENV=production tailwindcss -i ./src/style.css -o ./dist/stylesheet.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
