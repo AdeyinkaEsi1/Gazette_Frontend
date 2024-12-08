@@ -9,10 +9,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="ml-10 mr-10 font-serif">
-  <div class="flex flex-col p-4 ml-10 mr-10">
+<body class="md:ml-10 md:mr-10 ml-2 mr-2 font-serif">
+  <div class="flex flex-col p-4 md:ml-10 md:mr-10">
     <header>
-      <div class="flex flex-row justify-between">
+      <div class="hidden lg:flex flex-row justify-between">
         <div class="flex flex-row space-x-2">
           <form>
             <input type="text" id="search" aria-label="search" placeholder="SEARCH"
@@ -28,25 +28,43 @@
         <p>ACCOUNT</p>
       </div>
 
-      <div class="flex flex-row justify-evenly mt-5">
-        <div class="text-sm">
+      <div class="flex flex-row justify-between mt-0 md:mt-5">
+        <div class="hidden lg:flex text-sm">
           <div>
             <p>Sunday, December 1, 2024</p>
           </div>
         </div>
 
-        <div class="text-5xl">
+        <div class="lg:hidden">
+          <p><i class="fa fa-bars cursor-pointer" aria-hidden="true"></i></p>
+        </div>
+
+        <div class="md:text-5xl text-3xl">
           <p>GAZETTE</p>
         </div>
 
-        <div class="text-lg space-x-1 flex flex-row">
+        <div class="lg:hidden">
+          <p><i class="fa fa-user cursor-pointer" aria-hidden="true"></i></p>
+        </div>
+
+        <div class="hidden lg:flex text-lg space-x-1 flex-row">
           <p>EN</p>
           <i class="fa fa-chevron-down mt-1 cursor-pointer" aria-hidden="true"></i>
         </div>
       </div>
+
+      <div class="lg:hidden flex flex-row justify-between bg-gray-600 p-2 h-10 text-white">
+        <div class="flex items-center">
+          <p class="text-xs">Thursday, December 5, 2024</p>
+        </div>
+        <div class="text-lg space-x-1 flex items-center">
+          <p>EN</p>
+          <i class="fa fa-chevron-down cursor-pointer" aria-hidden="true"></i>
+        </div>
+      </div>
     </header>
 
-    <div class="space-y-1 mt-4">
+    <div class="space-y-1 mt-4 hidden lg:flex">
       <hr class="border-1 border-black">
       <hr class="border-1 border-black">
     </div>
