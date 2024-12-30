@@ -1,14 +1,10 @@
 const newsFeed = {
-    sourceIds: [],
-
     init() {
-        this.nigeriaNews(); // Fetch and render news on page load
+        this.unitedStateNews();
     },
 
-    nigeriaNews() {
-        // const url = "http://localhost:3000/news/nigeria";
-        
-        const url = "https://gazette-gdqe.onrender.com/news/nigeria";
+    unitedStateNews() {
+        const url = "http://localhost:3000/news/newsapi/us1";
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -19,65 +15,106 @@ const newsFeed = {
             .then(news => {
                 if (news.error) {
                     console.error('Error:', news.error);
-                    document.getElementById('result').textContent = 'Error fetching news.';
+                    document.getElementById('news-title1').textContent = 'Error fetching news.';
                 } else {
-                    this.news_sec1 = news.data.slice(0, 10).map(item => ({
+                    this.news_sec1 = news.articles.slice(0, 11).map(item => ({
                         title: item.title,
                         description: item.description,
                     }));
-                    this.news_sec2 = news.data.slice(10, 19).map(item => ({
+                    this.news_sec2 = news.articles.slice(11, 21).map(item => ({
                         title: item.title,
                         description: item.description,
                     }));
-                    this.news_sec3 = news.data.slice(19, 25).map(item => ({
+                    this.news_sec3 = news.articles.slice(19, 25).map(item => ({
                         title: item.title,
                         description: item.description,
                     }));
 
-                    this.renderNews(); // Render the news immediately after fetching
+                    this.renderNews();
                 }
             })
             .catch(error => {
                 console.error('Fetch Error:', error);
-                document.getElementById('result').textContent = 'Unable to fetch news. Please try again later.';
+                this.renderDummy();
             });
     },
 
+    renderDummy() {
+        const localstorageKey = 'LOCAL STORAGE DATA'
+        let sec1 = this.news_sec1
+        localStorage.setItem(localstorageKey, 'LOCAL DATA');
+        const storedData = localStorage.getItem(localstorageKey);
+        document.getElementById('news-title1').innerHTML = storedData
+    },
+
+    // let section1HTML = this.news_sec1
+    //     .map(item => `
+    //         <div class="news-item">
+    //             <p class="font-semibold">${item.title}</p>
+    //             <p>${item.description}</p>
+    //         </div>
+    //         `)
+    //     .join('');
+    // document.getElementById('news1-10').innerHTML = section1HTML
+
     renderNews() {
         if (this.news_sec1 && this.news_sec2 && this.news_sec3) {
-            let section1HTML = this.news_sec1
-                .map(item => `
-                    <div class="news-item">
-                        <p class="font-semibold">${item.title}</p>
-                        <p>${item.description}</p>
-                    </div>
-                `)
-                .join('');
-            document.getElementById('news1-10').innerHTML = section1HTML;
+            const newsContainer1 = document.getElementById('news1');
+            newsContainer1.innerHTML = '';
+            this.news_sec1.forEach(item => {
+                const titleElement = document.createElement('div');
+                titleElement.className = 'font-semibold';
+                titleElement.textContent = item.title || "No Title";
 
-            let section2HTML = this.news_sec2
-                .map(item => `
-                    <div class="news-item">
-                        <p class="font-semibold">${item.title}</p>
-                        <p>${item.description}</p>
-                    </div>
-                `)
-                .join('');
-            document.getElementById('news2-20').innerHTML = section2HTML;
+                const descElement = document.createElement('div');
+                descElement.className = '';
+                descElement.textContent = item.description || "No Description";
 
-            let section3HTML = this.news_sec3
-                .map(item => `
-                    <div class="news-item">
-                        <p class="font-semibold">${item.title}</p>
-                        <p>${item.description}</p>
-                    </div>
-                `)
-                .join('');
-            document.getElementById('news21-25').innerHTML = section3HTML;
+                newsContainer1.appendChild(titleElement);
+                newsContainer1.appendChild(descElement)
+            });
+
+            const newsContainer2 = document.getElementById('news2');
+            newsContainer2.innerHTML = '';
+            this.news_sec2.forEach(item => {
+                const titleElement = document.createElement('div');
+                titleElement.className = 'font-semibold';
+                titleElement.textContent = item.title || "No Title";
+
+                const descElement = document.createElement('div');
+                descElement.className = '';
+                descElement.textContent = item.description || "No Description";
+
+                newsContainer2.appendChild(titleElement);
+                newsContainer2.appendChild(descElement)
+            });
+
+            const newsContainer3 = document.getElementById('news3');
+            newsContainer3.innerHTML = '';
+            this.news_sec3.forEach(item => {
+                const titleElement = document.createElement('div');
+                titleElement.className = 'font-semibold';
+                titleElement.textContent = item.title || "No Title";
+
+                const descElement = document.createElement('div');
+                descElement.className = '';
+                descElement.textContent = item.description || "No Description";
+
+                newsContainer3.appendChild(titleElement);
+                newsContainer3.appendChild(descElement)
+            });
+
         } else {
             document.getElementById('result').textContent = 'No sources available.';
         }
+        function renderlocalStorageData() {
+            const localstorageKey = 'LOCAL STORAGE INFO'
+            localStorage.setItem(localstorageKey, 'LOCAL DATA')
+            const storedData = localStorage.getItem(localstorageKey)
+            document.getElementById('news-title1')
+        }
     },
+
 };
 
 newsFeed.init();
