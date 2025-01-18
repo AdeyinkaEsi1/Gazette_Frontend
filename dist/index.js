@@ -4,7 +4,7 @@ const newsFeed = {
     },
 
     unitedStateNews() {
-        const url = "http://localhost:3000/news/newsapi/us1";
+        const url = "https://gazette-gdqe.onrender.com/news/nigeria";
         fetch(url)
             .then(response => {
                 if (!response.ok) {
