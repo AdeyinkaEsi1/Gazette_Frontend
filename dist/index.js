@@ -4,7 +4,8 @@ const newsFeed = {
     },
 
     unitedStateNews() {
-        const url = "https://gazette-gdqe.onrender.com/news/nigeria";
+        // const url = "http://localhost:3000/news/newsapi/us1";
+        const url = "https://gazette-gdqe.onrender.com/news/newsapi/us1";
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -46,16 +47,6 @@ const newsFeed = {
         const storedData = localStorage.getItem(localstorageKey);
         document.getElementById('news-title1').innerHTML = storedData
     },
-
-    // let section1HTML = this.news_sec1
-    //     .map(item => `
-    //         <div class="news-item">
-    //             <p class="font-semibold">${item.title}</p>
-    //             <p>${item.description}</p>
-    //         </div>
-    //         `)
-    //     .join('');
-    // document.getElementById('news1-10').innerHTML = section1HTML
 
     renderNews() {
         if (this.news_sec1 && this.news_sec2 && this.news_sec3) {
